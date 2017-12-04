@@ -1,0 +1,21 @@
+{
+  "name": "file-metadata-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min src/test'",
+    "test-travis": "NODE_ENV=test mocha --recursive src/test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.2",
+    "supertest": "^3.0.0"
+  }
+}
