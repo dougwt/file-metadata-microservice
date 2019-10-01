@@ -1,23 +1,23 @@
 {
   "name": "file-metadata-microservice",
   "version": "1.0.0",
-  "description": "",
+  "description": "This microservice API accepts a POST request containing an attached file upload and responds with an object containing the size of the attachment in bytes.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
-    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min src/test'",
-    "test-travis": "NODE_ENV=test mocha --recursive src/test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dougwt/file-metadata-microservice.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.2",
-    "multer": "^1.3.0",
-    "multer-autoreap": "^0.1.3"
+  "bugs": {
+    "url": "https://github.com/dougwt/file-metadata-microservice/issues"
   },
-  "devDependencies": {
-    "mocha": "^4.1.0",
-    "nodemon": "^1.18.5",
-    "supertest": "^3.3.0"
+  "homepage": "https://github.com/dougwt/file-metadata-microservice#readme",
+  "dependencies": {
+    "formidable": "^1.2.1"
   }
 }
