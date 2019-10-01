@@ -1,15 +1,6 @@
 var formidable = require('formidable');
 
-function get_uploaded_files() {
-  var form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-    return files;
-  });
-}
-
-module.exports = (req, res) => {
-  var files = get_uploaded_files();
-  
+function ensure_file_uploaded(files) {
   if (!files) {
     res.status(400).json({
       error: 400,
@@ -17,8 +8,17 @@ module.exports = (req, res) => {
     });
     return;
   }
+}
 
-  res.json({ 'size': files });
+module.exports = (req, res) => {
+  var form = new formidable.IncomingForm();
+  form.parse(req, function(err, fields, files) {
+    ensure_file_uploaded(files)
+    res.send(files);
+  });
+  
+  
+  // res.json({ 'size': files });
 
   // res.end(`Hello from /api/get-file-size/ on Now 2.0!`);
   // res.end(JSON.stringify(req));
