@@ -1,26 +1,24 @@
 var formidable = require('formidable');
 
-function ensure_file_uploaded(files) {
-  if (!files) {
-    res.status(400).json({
-      error: 400,
-      message: 'Missing file attachment'
-    });
-    return;
-  }
+function respond_with_error(code, message, res) {
+  res.status(code).json({
+    error: code,
+    message
+  });
 }
 
 module.exports = (req, res) => {
   var form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
-    ensure_file_uploaded(files)
-    res.send(files);
-  });
-  
-  
-  // res.json({ 'size': files });
+    if (err) {
+      respond_with_error(500, 'Unable to upload file', res);
+      return;
+    }
+    if (!files.file || files.file.size === 0) {
+      respond_with_error(404, 'Missing file attachment', res);
+      return;
+    }
 
-  // res.end(`Hello from /api/get-file-size/ on Now 2.0!`);
-  // res.end(JSON.stringify(req));
-  // app.post('/get-file-size', upload.single('file'), autoReap, get_file_size);
+    res.json({ 'size': files.file.size });
+  });
 };
