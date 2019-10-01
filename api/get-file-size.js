@@ -16,7 +16,7 @@ function get_file_size(req, res, next) {
 }
 
 module.exports = (req, res) => {
-  // res.end(`Hello from /api/get-file-size/ on Now 2.0!`);
-  res.end(JSON.stringify(req));
+  res.end(`Hello from /api/get-file-size/ on Now 2.0!`);
+  // res.end(JSON.stringify(req));
   // app.post('/get-file-size', upload.single('file'), autoReap, get_file_size);
 };
